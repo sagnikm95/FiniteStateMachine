@@ -9,6 +9,6 @@ package finitestatemachine;
  *
  * @author vikram
  */
-public interface FSMListener {
-    void actionPerformed();
+public class Event {
+    
 }

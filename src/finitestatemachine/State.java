@@ -8,7 +8,12 @@ package finitestatemachine;
 /**
  *
  * @author vikram
+ * @param <T>
  */
-public class State {
+public class State<T extends Enum<T>> {
+    private final T stateValue;
     
+    State(T stateValue) {
+        this.stateValue = stateValue;
+    }
 }
