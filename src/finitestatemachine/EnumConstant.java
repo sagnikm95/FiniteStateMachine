@@ -6,9 +6,16 @@
 package finitestatemachine;
 
 /**
+ * An interface of a enumerated constant
  *
  * @author vikram
  */
-public interface Event extends EnumConstant {
+public interface EnumConstant {
+
+    /**
+     *
+     * @return the position of the constant in the enumeration of constants
+     */
+    public int getIndex();
     
 }

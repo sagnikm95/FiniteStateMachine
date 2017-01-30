@@ -10,14 +10,39 @@ package finitestatemachine;
  * @author vikram
  */
 public class FiniteStateMachine {
+    private int[][] transitionTable;
+    private final State[] states;
+    private final Event[] events;
     private State currentState;
 
-    public FiniteStateMachine(State startState) {
+    public FiniteStateMachine(State startState, int nStates, int nEvents,
+            State[] states, Event[] events) {
         this.currentState = startState;
+        this.states = states;
+        this.events = events;
+        this.transitionTable = new int[nStates][nEvents];
+        for (int i = 0; i < nStates; i++) {
+            for (int j = 0; j < nEvents; j++) {
+                this.transitionTable[i][j] = -1;
+            }
+        }
     }
     
     public State getCurrentState() {
         return currentState;
     }
     
+    public void addTransition(State sourceState, Event e,
+            State destinationState) {
+        this.transitionTable[sourceState.getIndex()][e.getIndex()] =
+                destinationState.getIndex();
+    }
+    
+    public void processEvent(Event e) {
+        if (transitionTable[this.currentState.getIndex()][e.getIndex()] != -1) {
+            int index =
+                    transitionTable[this.currentState.getIndex()][e.getIndex()];
+            this.currentState = states[index];
+        }
+    }
 }
