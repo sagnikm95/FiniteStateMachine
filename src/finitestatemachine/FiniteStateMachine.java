@@ -15,14 +15,14 @@ public class FiniteStateMachine {
     private final Event[] events;
     private State currentState;
 
-    public FiniteStateMachine(State startState, int nStates, int nEvents,
+    public FiniteStateMachine(State startState,
             State[] states, Event[] events) {
         this.currentState = startState;
         this.states = states;
         this.events = events;
-        this.transitionTable = new int[nStates][nEvents];
-        for (int i = 0; i < nStates; i++) {
-            for (int j = 0; j < nEvents; j++) {
+        this.transitionTable = new int[states.length][events.length];
+        for (int i = 0; i < states.length; i++) {
+            for (int j = 0; j < events.length; j++) {
                 this.transitionTable[i][j] = -1;
             }
         }
